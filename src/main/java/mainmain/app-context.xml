@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <bean id="mainFrame" class="mainmain.MyFrame" init-method="init">
+        <property name="title"><value>AddressBook</value></property>
+        <property name="contentPane"><ref bean="mainPanel" /></property>
+    </bean>
+    <bean id="mainPanel" class="mainmain.MyPanel" init-method="init">
+        <property name="panelComponents">
+            <list>
+                <ref bean="textField1" />
+                <ref bean="textField2" />
+                <ref bean="addButton" />
+                <ref bean="textField3" />
+            </list>
+        </property>
+    </bean>
+    <bean id="textField1" class="mainmain.MyTextField" init-method="init"/>
+    <bean id="textField2" class="mainmain.MyTextField" init-method="init"/>
+    <bean id="textField3" class="mainmain.MyTextField" init-method="init">
+       <!-- <property name="editable"><value>false</value></property> -->
+    </bean>
+    <bean id="addButton" class="mainmain.MyButton" init-method="init">
+        <property name="text"><value>ADD</value></property>
+        <property name="actionListener"><ref bean="buttonListener"/></property>
+    </bean>
+    <bean id="buttonListener" class="mainmain.MyActionListener">
+        <property name="nameField"><ref bean="textField1"/></property>
+        <property name="numberField"><ref bean="textField2"/></property>
+        <property name="displayField"><ref bean="textField3"/></property>
+    </bean>
+</beans>
