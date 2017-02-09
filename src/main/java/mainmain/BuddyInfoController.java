@@ -20,8 +20,10 @@ public class BuddyInfoController {
     }*/
 
     @RequestMapping(value = "/add")
-    public void addBuddy(@RequestParam(value = "name", defaultValue = "John") String name, @RequestParam(value = "num", required = true) int num){
-        ab.addBuddy (new BuddyInfo(name, num));
+    public BuddyInfo addBuddy(@RequestParam(value = "name", defaultValue = "John") String name, @RequestParam(value = "num", required = true) int num){
+        BuddyInfo b = new BuddyInfo(name, num);
+        ab.addBuddy (b);
+        return b;
     }
 
     @RequestMapping(value = "/remove")
